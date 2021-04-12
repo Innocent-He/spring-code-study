@@ -11,7 +11,7 @@ public class AopTestBootstrap {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("aop/aop.xml");
-		TestAopBean bean = (TestAopBean) context.getBean("aopTestBean");
+		TestAopBeanInterface bean = (TestAopBeanInterface) context.getBean("aopTestBean");
 		bean.testAop();
 		// 输出内容 看输出顺序，了解到增强方法的执行顺序 :
 		// Around proceed 之前 -> Before -> Around proceed 之后 -> After

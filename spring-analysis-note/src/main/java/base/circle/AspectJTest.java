@@ -1,11 +1,7 @@
-package aop;
+package base.circle;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 
 /**
  * @author JingQ at 2019-06-20
@@ -13,9 +9,8 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class AspectJTest {
 
-	@Pointcut("execution(* *.testAop(..))")
-	public void test() {
-	}
+	@Pointcut("execution(* *.aopMethod(..))")
+	public void test() {}
 
 	@Before("test()")
 	public void beforeTest() {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!--注释 5.1 构造方法循环依赖 无法解决-->
 <!--	<bean id="circleA" class="base.circle.CircleA">-->
@@ -11,8 +12,11 @@
 <!--	<bean id="circleB" class="base.circle.CircleB">-->
 <!--		<constructor-arg index="0" ref="circleA"/>-->
 <!--	</bean>-->
-
-	<!--注释 5.3 setter 方法注入-->
+	<!--开启 AOP 功能 注解版-->
+	<aop:aspectj-autoproxy  expose-proxy="true"/>
+	<aop:config expose-proxy="true" proxy-target-class="true"/>
+	<bean id="aspectJTest" class="base.circle.AspectJTest" />
+<!--	注释 5.3 setter 方法注入-->
 	<bean id="circleA" class="base.circle.CircleA">
 		<property name="circleB" ref="circleB"/>
 	</bean>
@@ -20,5 +24,4 @@
 	<bean id="circleB" class="base.circle.CircleB">
 		<property name="circleA" ref="circleA"/>
 	</bean>
-
 </beans>

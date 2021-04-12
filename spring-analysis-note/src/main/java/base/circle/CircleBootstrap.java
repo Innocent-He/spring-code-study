@@ -12,6 +12,7 @@ public class CircleBootstrap {
 		// 构造函数时的报错原因： Requested bean is currently in creation: Is there an unresolvable circular reference?
 		ApplicationContext context = new ClassPathXmlApplicationContext("circle/circle.xml");
 		CircleA circleA = (CircleA) context.getBean("circleA");
-		circleA.a();
+//		circleA.a();
+		circleA.aopMethod();
 	}
 }

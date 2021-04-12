@@ -9,6 +9,4 @@
 
 	<!--这里比较简单，只是通知 Spring 扫描对应包下的 bean -->
     <context:component-scan base-package="web.controller"/>
-
-
 </beans>

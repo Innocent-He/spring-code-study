@@ -6,7 +6,7 @@ package base.circle;
  */
 public class CircleB {
 
-	private CircleA circleA;
+	private AOPTestInterface circleA;
 
 
 	/**
@@ -17,11 +17,11 @@ public class CircleB {
 		circleA.a();
 	}
 
-	public CircleA getCircleA() {
+	public AOPTestInterface getCircleA() {
 		return circleA;
 	}
 
-	public void setCircleA(CircleA circleA) {
+	public void setCircleA(AOPTestInterface circleA) {
 		this.circleA = circleA;
 	}
 }

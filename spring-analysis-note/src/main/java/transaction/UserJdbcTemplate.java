@@ -19,22 +19,24 @@ public class UserJdbcTemplate implements UserDao {
 
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void insertUser(JdbcUser user) {
 		String sql = "insert into user (id, name, age) values (?, ?, ?)";
 		jdbcTemplate.update(sql, user.getId(), user.getName(), user.getAge());
 		System.out.println("Create record : " + user.toString());
+		deleteById(4);
 
-		// 事务测试，抛出异常，让上面的插入操作回滚
-		throw new RuntimeException("aa");
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void deleteById(Integer id) {
 		String sql = "delete from user where id = ?";
 		jdbcTemplate.update(sql, id);
 		System.out.println("Delete record, id = " + id);
+		// 事务测试，抛出异常，让上面的插入操作回滚
+		throw new RuntimeException("aa");
+
 	}
 
 
